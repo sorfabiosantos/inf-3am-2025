@@ -28,7 +28,6 @@ class User
         $this->photo = $photo;
     }
 
-
     public function getId(): ?int
     {
         return $this->id;
