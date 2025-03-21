@@ -4,12 +4,12 @@ namespace Source\Models;
 
 class User
 {
-    private $id;
-    private $idType;
-    private $name;
-    private $email;
-    private $password;
-    private $photo;
+    protected $id;
+    protected $idType;
+    protected $name;
+    protected $email;
+    protected $password;
+    protected $photo;
 
     public function __construct(
         int $id = null,
@@ -20,6 +20,7 @@ class User
         string $photo = null
     )
     {
+        echo "eu so a construtora de USER<br>";
         $this->id = $id;
         $this->idType = $idType;
         $this->name = $name;
