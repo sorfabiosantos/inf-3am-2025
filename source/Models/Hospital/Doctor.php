@@ -20,18 +20,7 @@ class Doctor extends User
         string $speciality = null
     )
     {
-        echo "eu sou a construtora do médico";
-        /*
-        $this->id = $id;
-        $this->idType = $idType;
-        $this->name = $name;
-        $this->email = $email;
-        $this->password = $password;
-        $this->photo = $photo;
-        */
-
         parent::__construct($id, $idType, $name, $email, $password, $photo);
-
         $this->crm = $crm;
         $this->speciality = $speciality;
     }
