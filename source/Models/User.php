@@ -2,12 +2,9 @@
 
 namespace Source\Models;
 
-use FTP\Connection;
 use Source\Core\Connect;
 use Source\Core\Model;
 use Source\Models\Records\Address;
-use PDO;
-use PDOException;
 
 class User extends Model
 {

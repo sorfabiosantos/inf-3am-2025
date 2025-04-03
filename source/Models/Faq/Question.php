@@ -2,7 +2,6 @@
 
 namespace Source\Models\Faq;
 
-use PDO;
 use Source\Core\Connect;
 use Source\Core\Model;
 
