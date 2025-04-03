@@ -4,8 +4,9 @@ namespace Source\Models\Faq;
 
 use PDO;
 use Source\Core\Connect;
+use Source\Core\Model;
 
-class Question
+class Question extends Model
 {
     private $id;
     private $typeId;
@@ -19,6 +20,7 @@ class Question
         string $answer = null
     )
     {
+        $this->table = "questions";
         $this->id = $id;
         $this->typeId = $typeId;
         $this->question = $question;
@@ -63,17 +65,6 @@ class Question
     public function setAnswer(?string $answer): void
     {
         $this->answer = $answer;
-    }
-
-    public function findAll ()
-    {
-        try {
-            $sql = "SELECT * FROM questions";
-            $stmt = Connect::getInstance()->query($sql);
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            echo "Ops! {$e->getMessage()}";
-        }
     }
 
 }

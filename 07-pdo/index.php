@@ -8,6 +8,7 @@ use Source\Models\Faq\Question;
 echo "<h1>Acessando BD com a PDO</h1>";
 
 $user = new User();
+var_dump($user->findById(2));
 $users =  $user->findAll();
 var_dump($users);
 

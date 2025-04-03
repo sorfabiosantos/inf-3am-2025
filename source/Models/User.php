@@ -4,11 +4,12 @@ namespace Source\Models;
 
 use FTP\Connection;
 use Source\Core\Connect;
+use Source\Core\Model;
 use Source\Models\Records\Address;
 use PDO;
 use PDOException;
 
-class User
+class User extends Model
 {
     protected $id;
     protected $idType;
@@ -28,6 +29,7 @@ class User
         Address $address = null
     )
     {
+        $this->table = "users";
         $this->id = $id;
         $this->idType = $idType;
         $this->name = $name;
@@ -101,16 +103,4 @@ class User
         echo "Olá, {$this->name}! Você está logado!";
     }
 
-    public function findAll ()
-    {
-
-        try {
-            $sql = "SELECT * FROM users";
-            $stmt = Connect::getInstance()->query($sql);
-            return $stmt->fetchAll();
-        } catch (PDOException $e) {
-            echo "Ops! {$e->getMessage()}";
-        }
-
-    }
 }
