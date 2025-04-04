@@ -113,7 +113,8 @@ abstract class Model
     public function findById (int $id): bool
     {
         try {
-            $stmt = Connect::getInstance()->prepare("SELECT * FROM {$this->table} WHERE id = :id");
+            $stmt = Connect::getInstance()
+                ->prepare("SELECT * FROM {$this->table} WHERE id = :id");
             $stmt->bindValue("id",$id);
             $stmt->execute();
             $result = $stmt->fetch();
