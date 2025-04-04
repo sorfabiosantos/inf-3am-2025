@@ -2,9 +2,9 @@
 
 namespace Source\Models;
 
-use Source\Core\Connect;
+//use Source\Core\Connect;
 use Source\Core\Model;
-use Source\Models\Records\Address;
+//use Source\Models\Records\Address;
 
 class User extends Model
 {
@@ -14,7 +14,7 @@ class User extends Model
     protected $email;
     protected $password;
     protected $photo;
-    protected $address;
+    //protected $address;
 
     public function __construct(
         int $id = null,
@@ -22,8 +22,8 @@ class User extends Model
         string $name = null,
         string $email = null,
         string $password = null,
-        string $photo = null,
-        Address $address = null
+        string $photo = null
+        //Address $address = null
     )
     {
         $this->table = "users";
@@ -33,7 +33,7 @@ class User extends Model
         $this->email = $email;
         $this->password = $password;
         $this->photo = $photo;
-        $this->address = $address;
+        //$this->address = $address;
     }
 
     public function getId(): ?int

@@ -25,14 +25,14 @@ DROP TABLE IF EXISTS `carts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `carts` (
-                         `id` int NOT NULL AUTO_INCREMENT,
-                         `user_id` int NOT NULL,
-                         `products_id` int NOT NULL,
-                         PRIMARY KEY (`id`),
-                         KEY `fk_cart_users1_idx` (`user_id`),
-                         KEY `fk_carts_products1_idx` (`products_id`),
-                         CONSTRAINT `fk_cart_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-                         CONSTRAINT `fk_carts_products1` FOREIGN KEY (`products_id`) REFERENCES `products` (`id`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `products_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_cart_users1_idx` (`user_id`),
+  KEY `fk_carts_products1_idx` (`products_id`),
+  CONSTRAINT `fk_cart_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `fk_carts_products1` FOREIGN KEY (`products_id`) REFERENCES `products` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -53,12 +53,12 @@ DROP TABLE IF EXISTS `invoices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `invoices` (
-                            `id` int NOT NULL AUTO_INCREMENT,
-                            `users_id` int NOT NULL,
-                            `date` date NOT NULL,
-                            PRIMARY KEY (`id`),
-                            KEY `fk_sales_users1_idx` (`users_id`),
-                            CONSTRAINT `fk_sales_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `users_id` int NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_sales_users1_idx` (`users_id`),
+  CONSTRAINT `fk_sales_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -79,15 +79,15 @@ DROP TABLE IF EXISTS `itens`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `itens` (
-                         `id` int NOT NULL AUTO_INCREMENT,
-                         `invoice_id` int NOT NULL,
-                         `product_id` int NOT NULL,
-                         `price` double NOT NULL,
-                         PRIMARY KEY (`id`),
-                         KEY `fk_itens_invoices1_idx` (`invoice_id`),
-                         KEY `fk_itens_products1_idx` (`product_id`),
-                         CONSTRAINT `fk_itens_invoices1` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`id`),
-                         CONSTRAINT `fk_itens_products1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `invoice_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `price` double NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_itens_invoices1_idx` (`invoice_id`),
+  KEY `fk_itens_products1_idx` (`product_id`),
+  CONSTRAINT `fk_itens_invoices1` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`id`),
+  CONSTRAINT `fk_itens_products1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -108,13 +108,13 @@ DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
-                            `id` int NOT NULL,
-                            `category_id` int NOT NULL,
-                            `name` varchar(45) NOT NULL,
-                            `price` double NOT NULL,
-                            PRIMARY KEY (`id`),
-                            KEY `fk_products_products_categories1_idx` (`category_id`),
-                            CONSTRAINT `fk_products_products_categories1` FOREIGN KEY (`category_id`) REFERENCES `products_categories` (`id`)
+  `id` int NOT NULL,
+  `category_id` int NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `price` double NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_products_products_categories1_idx` (`category_id`),
+  CONSTRAINT `fk_products_products_categories1` FOREIGN KEY (`category_id`) REFERENCES `products_categories` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -135,9 +135,9 @@ DROP TABLE IF EXISTS `products_categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products_categories` (
-                                       `id` int NOT NULL AUTO_INCREMENT,
-                                       `name` varchar(255) NOT NULL,
-                                       PRIMARY KEY (`id`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -158,13 +158,13 @@ DROP TABLE IF EXISTS `questions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `questions` (
-                             `id` int NOT NULL AUTO_INCREMENT,
-                             `idType` int NOT NULL,
-                             `question` varchar(255) NOT NULL,
-                             `answer` text NOT NULL,
-                             PRIMARY KEY (`id`),
-                             KEY `fk_questions_types_idx` (`idType`),
-                             CONSTRAINT `fk_questions_types` FOREIGN KEY (`idType`) REFERENCES `questions_types` (`id`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `idType` int NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `answer` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_questions_types_idx` (`idType`),
+  CONSTRAINT `fk_questions_types` FOREIGN KEY (`idType`) REFERENCES `questions_types` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -186,9 +186,9 @@ DROP TABLE IF EXISTS `questions_types`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `questions_types` (
-                                   `id` int NOT NULL AUTO_INCREMENT,
-                                   `description` varchar(255) NOT NULL,
-                                   PRIMARY KEY (`id`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -210,15 +210,15 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-                         `id` int NOT NULL AUTO_INCREMENT,
-                         `idType` int NOT NULL,
-                         `name` varchar(255) NOT NULL,
-                         `email` varchar(255) NOT NULL,
-                         `password` varchar(255) NOT NULL,
-                         `photo` varchar(255) DEFAULT NULL,
-                         PRIMARY KEY (`id`),
-                         KEY `fk_users_users_types1_idx` (`idType`),
-                         CONSTRAINT `fk_users_users_types1` FOREIGN KEY (`idType`) REFERENCES `users_types` (`id`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `idType` int NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_users_users_types1_idx` (`idType`),
+  CONSTRAINT `fk_users_users_types1` FOREIGN KEY (`idType`) REFERENCES `users_types` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -240,9 +240,9 @@ DROP TABLE IF EXISTS `users_types`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users_types` (
-                               `id` int NOT NULL AUTO_INCREMENT,
-                               `description` varchar(255) NOT NULL,
-                               PRIMARY KEY (`id`)
+  `id` int NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -265,4 +265,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-03  7:54:46
+-- Dump completed on 2025-04-04  7:17:50

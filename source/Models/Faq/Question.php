@@ -2,26 +2,25 @@
 
 namespace Source\Models\Faq;
 
-use Source\Core\Connect;
 use Source\Core\Model;
 
 class Question extends Model
 {
     private $id;
-    private $typeId;
+    private $idType;
     private $question;
     private $answer;
 
     public function __construct (
         int $id = null,
-        int $typeId = null,
+        int $idType = null,
         string $question = null,
         string $answer = null
     )
     {
         $this->table = "questions";
         $this->id = $id;
-        $this->typeId = $typeId;
+        $this->idType = $idType;
         $this->question = $question;
         $this->answer = $answer;
     }
@@ -36,14 +35,14 @@ class Question extends Model
         $this->id = $id;
     }
 
-    public function getTypeId(): ?int
+    public function getIdType(): ?int
     {
-        return $this->typeId;
+        return $this->idType;
     }
 
-    public function setTypeId(?int $typeId): void
+    public function setIdType(?int $idType): void
     {
-        $this->typeId = $typeId;
+        $this->idType = $idType;
     }
 
     public function getQuestion(): ?string
