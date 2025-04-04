@@ -100,4 +100,11 @@ class User extends Model
         echo "Olá, {$this->name}! Você está logado!";
     }
 
+/*    public function insert (): bool
+    {
+        // verificar a existencia do e-mail
+        // se não existir
+        ///parent::insert();
+    }*/
+
 }
