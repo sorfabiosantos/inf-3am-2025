@@ -47,7 +47,7 @@ echo "<h2>Excluindo um Usuário com o método deleteById()</h2>";
 
 $userDelete = new User();
 if(!$userDelete->deleteById(2)) {
-    echo "<h3>Erro na exclusão</h3>";
+    echo "<h3>Registro não encontrado!</h3>";
 } else {
     echo "<h3>Registro excluído com sucesso</h3>";
 }
