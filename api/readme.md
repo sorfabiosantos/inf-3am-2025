@@ -1,6 +1,6 @@
 # Loja
 
-Na pasta API crie os scripts necessários para manipular:
+Na pasta API crie os scripts necessários para manipular as entidades products e products_categories:
 
 - products-find-all.php para listar todos o produtos;
 - products-find-by-id.php para listar um produto por id, o id do produto deve ser passado por parâmetro e recebido por $_GET
