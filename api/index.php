@@ -28,6 +28,8 @@ $route->group("/users");
 $route->get("/", "Users:listUsers");
 $route->get("/id/{id}", "Users:listUserById");
 
+$route->post("/", "Users:createUser");
+
 $route->group("null");
 
 $route->dispatch();
