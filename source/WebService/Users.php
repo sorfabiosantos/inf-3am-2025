@@ -6,7 +6,7 @@ use Source\Models\User;
 
 class Users extends Api
 {
-    public function listUsers ()
+    public function listUsers (): void
     {
         $users = new User();
         //var_dump($users->findAll());
@@ -45,5 +45,16 @@ class Users extends Api
         $this->call(201, "success", "Usuário criado com sucesso", "success")
             ->back($response);
 
+    }
+
+    public function listUserById (array $data): void
+    {
+        $user = new User();
+        //var_dump($user->findById($data["id"]));
+        $response = [
+            "name" => $user->getName(),
+            "email" => $user->getEmail()
+        ];
+        $this->call(201, "success", "Encontrado com sucesso", "success")->back($response);
     }
 }
