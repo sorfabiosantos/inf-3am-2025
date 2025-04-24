@@ -19,7 +19,7 @@ class Api
         if(!empty($status)){
             $this->response = [
                 "code" => $code,
-                "type" => $status,
+                "status" => $status,
                 "message" => (!empty($message) ? $message : null)
             ];
         }
