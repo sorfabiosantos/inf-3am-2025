@@ -19,7 +19,7 @@ class Users extends Api
 
         // verifica se os dados estão preenchidos
         if(in_array("", $data)){
-            $this->call(400, "error", "Dados inválidos", "error")->back();
+            $this->call(400, "bad_request", "Dados inválidos", "error")->back();
             return;
         }
 
@@ -32,7 +32,7 @@ class Users extends Api
         );
 
         if(!$user->insert()){
-            $this->call(400, "error", $user->getErrorMessage(), "error")->back();
+            $this->call(500, "internal_server_error", $user->getErrorMessage(), "error")->back();
             return;
         }
         // montar $response com as informações necessárias para mostrar no front
@@ -42,15 +42,21 @@ class Users extends Api
             "photo" => $user->getPhoto()
         ];
 
-        $this->call(201, "success", "Usuário criado com sucesso", "success")
+        $this->call(201, "created", "Usuário criado com sucesso", "success")
             ->back($response);
 
     }
 
     public function listUserById (array $data): void
     {
-        if(isset($data["id"])){
-            $this->call(400, "error", "ID não informado", "error")->back();
+
+        if(!isset($data["id"])) {
+            $this->call(400, "bad_request", "ID inválido", "error")->back();
+            return;
+        }
+
+        if(!filter_var($data["id"], FILTER_VALIDATE_INT)) {
+            $this->call(400, "bad_request", "ID inválido", "error")->back();
             return;
         }
 
