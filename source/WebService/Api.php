@@ -28,7 +28,7 @@ class Api
 
     protected function back(array $data = null): Api
     {
-        if (!empty($this->response)) {
+        if ($data) {
             $this->response["data"] = $data;
         }
         echo json_encode($this->response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
