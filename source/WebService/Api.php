@@ -13,13 +13,13 @@ class Api
         $this->headers = getallheaders();
     }
 
-    protected function call (int $code, string $type = null, string $message = null): Api
+    protected function call (int $code, string $status = null, string $message = null): Api
     {
         http_response_code($code);
-        if(!empty($type)){
+        if(!empty($status)){
             $this->response = [
                 "code" => $code,
-                "type" => $type,
+                "type" => $status,
                 "message" => (!empty($message) ? $message : null)
             ];
         }
@@ -31,7 +31,7 @@ class Api
         if ($data) {
             $this->response["data"] = $data;
         }
-        echo json_encode($this->response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        echo json_encode($this->response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         return $this;
     }
 

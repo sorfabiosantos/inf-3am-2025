@@ -49,15 +49,20 @@ class Users extends Api
 
     public function listUserById (array $data): void
     {
+        if(isset($data["id"])){
+            $this->call(400, "error", "ID não informado", "error")->back();
+            return;
+        }
+
         $user = new User();
         if(!$user->findById($data["id"])){
-            $this->call(400, "error", "Usuário não encontrado", "error")->back();
+            $this->call(200, "error", "Usuário não encontrado", "error")->back();
             return;
         }
         $response = [
             "name" => $user->getName(),
             "email" => $user->getEmail()
         ];
-        $this->call(201, "success", "Encontrado com sucesso", "success")->back($response);
+        $this->call(200, "success", "Encontrado com sucesso", "success")->back($response);
     }
 }
