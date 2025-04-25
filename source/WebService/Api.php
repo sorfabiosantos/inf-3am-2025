@@ -13,12 +13,13 @@ class Api
         $this->headers = getallheaders();
     }
 
-    protected function call (int $code, string $status = null, string $message = null): Api
+    protected function call (int $code, string $status = null, string $message = null, $type = null): Api
     {
         http_response_code($code);
         if(!empty($status)){
             $this->response = [
                 "code" => $code,
+                "type" => $type,
                 "status" => $status,
                 "message" => (!empty($message) ? $message : null)
             ];
