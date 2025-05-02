@@ -72,5 +72,11 @@ class Users extends Api
         $this->call(200, "success", "Encontrado com sucesso", "success")->back($response);
     }
 
+    public function updateUser (array $data): void
+    {
+       ///var_dump($data);
+       $this->call(200,"create","Usuário alterado com sucesso!")->back($data);
+    }
+
 
 }
