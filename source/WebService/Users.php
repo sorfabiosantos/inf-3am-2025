@@ -71,4 +71,6 @@ class Users extends Api
         ];
         $this->call(200, "success", "Encontrado com sucesso", "success")->back($response);
     }
+
+
 }
