@@ -78,7 +78,7 @@ class Users extends Api
        $this->auth();
        var_dump($data);
        var_dump( $this->userAuth);
-       var_dump($this->userAuth->name, $this->userAuth->email);
+       var_dump($this->userAuth->id, $this->userAuth->email, $this->userAuth->idType);
     }
 
     public function login(array $data): void
@@ -106,7 +106,7 @@ class Users extends Api
         $token = $jwt->create([
             "id" => $user->getId(),
             "email" => $user->getEmail(),
-            "name" => $user->getName()
+            "idType" => $user->getIdType()
         ]);
 
         // Retornar o token JWT na resposta

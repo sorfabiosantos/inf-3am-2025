@@ -58,6 +58,7 @@ class Api
 
         $this->userAuth = $decoded->data;
 
+
     }
 
 }
