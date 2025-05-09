@@ -4,6 +4,8 @@ namespace Source\Models;
 
 use Source\Core\Connect;
 use Source\Core\Model;
+use PDO;
+use PDOException;
 
 class User extends Model
 {
@@ -122,6 +124,33 @@ class User extends Model
         }
 
         return true;
+    }
+
+    public function findByEmail (string $email): bool
+    {
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $stmt = Connect::getInstance()->prepare($sql);
+        $stmt->bindValue(":email", $email);
+
+        try {
+            $stmt->execute();
+            $result = $stmt->fetch();
+            if (!$result) {
+                return false;
+            }
+            $this->id = $result->id;
+            $this->idType = $result->idType;
+            $this->name = $result->name;
+            $this->email = $result->email;
+            $this->password = $result->password;
+            $this->photo = $result->photo;
+
+            return true;
+        } catch (PDOException $e) {
+            $this->errorMessage = "Erro ao buscar o registro: {$e->getMessage()}";
+            return false;
+        }
+
     }
 
 }
