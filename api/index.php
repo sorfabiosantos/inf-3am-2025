@@ -30,11 +30,16 @@ $route->post("/login", "Users:login");
 $route->get("/", "Users:listUsers");
 $route->get("/id/{id}", "Users:listUserById");
 $route->get("/id/", "Users:listUserById");
-
 // http://localhost:8080/inf-3am-2025/api/users/add
 $route->post("/add", "Users:createUser");
 // http://localhost:8080/inf-3am-2025/api/users/update
 $route->put("/update", "Users:updateUser");
+
+$route->group("null");
+
+$route->group("/products");
+
+$route->delete("/delete/id/{id}", "Products:deleteProduct");
 
 $route->group("null");
 
